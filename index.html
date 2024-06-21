@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Form</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+        #form-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .form-step {
+            display: none;
+        }
+        .form-step.active {
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"], input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <video id="video-background" src="https://cdn.hubblecontent.osi.office.net/videos/publish/2c32852d-1f09-4b61-aae7-e14432265705/508610688.mp4" autoplay muted loop></video>
+
+    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop></audio>
+
+    <div id="form-container">
+        <div class="form-step active" id="step-1">
+            <h2>Welcome to the Form</h2>
+            <p>Date: <span id="current-date"></span></p>
+            <button onclick="nextStep(2)">Start</button>
+        </div>
+        <div class="form-step" id="step-2">
+            <h2>Question 1</h2>
+            <label for="question1">What is your name?</label>
+            <input type="text" id="question1" name="question1" required><br>
+            <button onclick="nextStep(3)">Next</button>
+        </div>
+        <div class="form-step" id="step-3">
+            <h2>Question 2</h2>
+            <label for="question2">What is your email?</label>
+            <input type="email" id="question2" name="question2" required><br>
+            <button onclick="nextStep(4)">Next</button>
+        </div>
+        <div class="form-step" id="step-4">
+            <h2>Thank You!</h2>
+            <p>You have completed the form.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var video = document.getElementById('video-background');
+            video.addEventListener('ended', () => {
+                video.currentTime = 0;
+                video.play();
+            });
+
+            var audio = document.getElementById('bg-music');
+            audio.play();
+
+            var currentDate = new Date();
+            document.getElementById('current-date').textContent = currentDate.toDateString();
+        });
+
+        function nextStep(step) {
+            var activeStep = document.querySelector('.form-step.active');
+            if (activeStep) {
+                activeStep.classList.remove('active');
+            }
+            var nextStep = document.getElementById('step-' + step);
+            if (nextStep) {
+                nextStep.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
