@@ -91,7 +91,7 @@
       cursor: pointer;
     }
     button:hover { background: #0d47a1; }
-    .message { text-align: center; margin-top: 12px; font-weight: bold; }
+    .message { text-align: center; margin-top: 15px; font-weight: bold; }
     .success { color: #2e7d32; }
     .error { color: #c62828; }
     .center { text-align: center; }
@@ -114,8 +114,8 @@
       content: " ";
       display: block;
       position: absolute;
-      top: 3px;
-      left: 37px;
+      top: 50%;
+      left: 50%;
       width: 6px;
       height: 18px;
       border-radius: 20%;
@@ -150,6 +150,7 @@
 
     <div id="form-section">
       <h1>Local Gospel / Follow-up Report</h1>
+      <div id="message" class="message"></div>
 
       <form id="reportForm">
         <fieldset>
@@ -219,7 +220,6 @@
         </fieldset>
 
         <button type="submit" id="submitBtn">Submit Report</button>
-        <div id="message" class="message"></div>
       </form>
     </div>
 
@@ -370,6 +370,8 @@
         form.reset();
         message.textContent = "✅ Report submitted successfully!";
         message.className = "message success";
+        form.style.display = "none";
+
 
       } catch (err) {
         loader.style.display = "none";
