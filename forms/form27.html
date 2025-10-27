@@ -96,15 +96,13 @@
     .error { color: #c62828; }
     .center { text-align: center; }
 
-    /* ===== Loader ===== */
+    /* LDS Spinner */
     .lds-spinner {
       color: official;
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 100;
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
     }
     .lds-spinner div {
       transform-origin: 40px 40px;
@@ -114,12 +112,12 @@
       content: " ";
       display: block;
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 3px;
+      left: 37px;
       width: 6px;
       height: 18px;
       border-radius: 20%;
-      background: #1565c0;
+      background: #0078d7;
     }
     .lds-spinner div:nth-child(1) { transform: rotate(0deg); animation-delay: -1.1s; }
     .lds-spinner div:nth-child(2) { transform: rotate(30deg); animation-delay: -1s; }
@@ -133,6 +131,7 @@
     .lds-spinner div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }
     .lds-spinner div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }
     .lds-spinner div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }
+
     @keyframes lds-spinner {
       0% { opacity: 1; }
       100% { opacity: 0; }
@@ -144,9 +143,9 @@
   <div class="container">
     <!-- Loader -->
     <div class="lds-spinner" id="loader">
-      <div></div><div></div><div></div><div></div><div></div><div></div>
-      <div></div><div></div><div></div><div></div><div></div><div></div>
-    </div>
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+  </div>
 
     <div id="form-section">
       <h1>Local Gospel / Follow-up Report</h1>
