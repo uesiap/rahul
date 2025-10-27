@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submitted Reports of Local Gospel/Retreat Report</title>
+  <meta name="description" content="View all Local Gospel / Follow-up Reports">
+  <link rel="icon" href="/vidhyardhi-geethavali/Icon192.jpg" type="image/png">
+  <link rel="apple-touch-icon" href="/vidhyardhi-geethavali/Icon-192.jpg">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f6f9fc;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #1565c0;
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* ===== Loader Overlay ===== */
+    .loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .lds-spinner {
+      color: official;
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+
+    .lds-spinner div {
+      transform-origin: 40px 40px;
+      animation: lds-spinner 1.2s linear infinite;
+    }
+
+    .lds-spinner div:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 3px;
+      left: 37px;
+      width: 6px;
+      height: 18px;
+      border-radius: 20%;
+      background: #1565c0;
+    }
+
+    .lds-spinner div:nth-child(1) { transform: rotate(0deg); animation-delay: -1.1s; }
+    .lds-spinner div:nth-child(2) { transform: rotate(30deg); animation-delay: -1s; }
+    .lds-spinner div:nth-child(3) { transform: rotate(60deg); animation-delay: -0.9s; }
+    .lds-spinner div:nth-child(4) { transform: rotate(90deg); animation-delay: -0.8s; }
+    .lds-spinner div:nth-child(5) { transform: rotate(120deg); animation-delay: -0.7s; }
+    .lds-spinner div:nth-child(6) { transform: rotate(150deg); animation-delay: -0.6s; }
+    .lds-spinner div:nth-child(7) { transform: rotate(180deg); animation-delay: -0.5s; }
+    .lds-spinner div:nth-child(8) { transform: rotate(210deg); animation-delay: -0.4s; }
+    .lds-spinner div:nth-child(9) { transform: rotate(240deg); animation-delay: -0.3s; }
+    .lds-spinner div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }
+    .lds-spinner div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }
+    .lds-spinner div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }
+
+    @keyframes lds-spinner {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .no-data {
+      text-align: center;
+      margin-top: 20px;
+      color: #999;
+      font-style: italic;
+    }
+
+    /* ====== Individual Response Card ====== */
+    .response-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 18px;
+      margin-bottom: 20px;
+      border-left: 5px solid #1565c0;
+      width: 100%;
+      max-width: 650px;
+    }
+
+    .response-header {
+      font-weight: bold;
+      color: #1565c0;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .response-item {
+      margin-bottom: 12px;
+    }
+
+    .question {
+      font-weight: bold;
+      color: #444;
+      margin-bottom: 4px;
+    }
+
+    .answer {
+      color: #333;
+      background: #f2f7ff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      word-wrap: break-word;
+    }
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 16px;
+    }
+
+    button {
+      background: #1565c0;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0d47a1;
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 768px) {
+      .response-card {
+        padding: 14px;
+        max-width: 95%;
+      }
+      button {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loader-overlay" id="loaderOverlay">
+    <div class="lds-spinner">
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+
+  <h1>📋 Submitted Local Gospel / Follow-up Reports</h1>
+  <div id="dataContainer"></div>
+
+  <div class="nav-buttons" id="navButtons" style="display:none;">
+    <button id="prevBtn">⏮ Previous</button>
+    <span id="counter" style="font-weight:bold; color:#1565c0;"></span>
+    <button id="nextBtn">Next ⏭</button>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGS4dCnRS7ywHWRBjnaOpDmL28323flw8",
+      authDomain: "melamrahul.firebaseapp.com",
+      databaseURL: "https://melamrahul-default-rtdb.firebaseio.com",
+      projectId: "melamrahul",
+      storageBucket: "melamrahul.appspot.com",
+      messagingSenderId: "721100209859",
+      appId: "1:721100209859:web:52b007dd6becf1d54c6c76",
+      measurementId: "G-8ZH6Z66ESH"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const loader = document.getElementById("loaderOverlay");
+    const container = document.getElementById("dataContainer");
+    const navButtons = document.getElementById("navButtons");
+    const counter = document.getElementById("counter");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let reports = [];
+    let currentIndex = 0;
+
+    async function fetchData() {
+      loader.style.display = "flex";
+      const snapshot = await db.ref("reports").once("value");
+      loader.style.display = "none";
+
+      if (!snapshot.exists()) {
+        container.innerHTML = `<p class="no-data">No reports submitted yet.</p>`;
+        return;
+      }
+
+      reports = Object.values(snapshot.val());
+      navButtons.style.display = "flex";
+      showReport(0);
+    }
+
+    function showReport(index) {
+      const r = reports[index];
+      container.innerHTML = `
+        <div class="response-card">
+          <div class="response-header">Response ${index + 1} of ${reports.length}</div>
+
+          ${createItem("Your Name", r.yourName)}
+          ${createItem("Zone Name", r.eu)}
+          ${createItem("No. of Gospel Evenings / Retreats conducted", r.gospelEfforts?.numGospel)}
+          ${createItem("Total No. of students responded (B+G)", r.gospelEfforts?.numResponded)}
+          ${createItem("Total No. of follow-up meetings conducted (B+G)", r.gospelEfforts?.numFollowupMeetings)}
+          ${createItem("No. of responded students attended follow-up (B+G)", r.gospelEfforts?.numAttendedFollowup)}
+          ${createItem("No. of students accepted the Lord (B+G)", r.gospelEfforts?.numAccepted)}
+          ${createItem("No. of born-again students attending Jr. BBSs (B+G)", r.gospelEfforts?.numBornAgain)}
+          ${createItem("Did your zone conduct Follow-up meets within a short time after gospel meeting?", r.followupReview?.numEUsFollowup)}
+          ${createItem("Senior students' involvement", r.followupReview?.seniorInvolvement)}
+          ${createItem("Graduates' involvement", r.followupReview?.graduateInvolvement)}
+          ${createItem("Are senior students aware of counseling a responded student?", r.followupReview?.awareCounseling)}
+          ${createItem("Was any follow-up material used?", r.followupReview?.followupMaterial)}
+          ${createItem("Any specific problems for follow-up work?", r.followupReview?.specificProblems)}
+        </div>
+      `;
+      counter.textContent = `${index + 1} / ${reports.length}`;
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === reports.length - 1;
+    }
+
+    function createItem(question, answer) {
+      return `
+        <div class="response-item">
+          <div class="question">${question}</div>
+          <div class="answer">${answer || "-"}</div>
+        </div>
+      `;
+    }
+
+    prevBtn.onclick = () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        showReport(currentIndex);
+      }
+    };
+
+    nextBtn.onclick = () => {
+      if (currentIndex < reports.length - 1) {
+        currentIndex++;
+        showReport(currentIndex);
+      }
+    };
+
+    fetchData();
+  </script>
+</body>
+</html>
