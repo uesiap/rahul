@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Gospel/Follow-up Report</title>
+    <meta name="title" content="Local Gospel/Follow-up Report">
+    <meta name="description"
+        content="Easy Forms - Created by Rahul">
+
+    <link rel="canonical" href="https://uesiap.github.io/rahul/forms/form27" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uesiap.github.io/rahul/forms/form27">
+    <meta property="og:title" content="Local Gospel/Follow-up Report">
+    <meta property="og:description"
+        content="Easy Forms - Created by Rahul">
+    <meta property="og:imag" content="https://i.postimg.cc/zvpPNWKr/easyformsbyrahulogo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="https://i.ibb.co/PGWLtMPc/easyformsbyrahulogo.jpg">
+    <meta property="twitter:url" content="https://uesiap.github.io/rahul/forms/form27">
+    <meta property="twitter:title" content="Local Gospel/Follow-up Report">
+    <meta property="twitter:description"
+        content="Easy Forms - Created by Rahul">
+    <meta property="twitter:image" content="https://i.postimg.cc/zvpPNWKr/easyformsbyrahulogo.jpg">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f6f9fc;
+    color: #333;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .container {
+    max-width: 900px;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  h1 {
+    color: #1565c0;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    padding: 15px;
+  }
+  legend {
+    color: #1565c0;
+    font-weight: bold;
+  }
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+  }
+  .required {
+    color: red;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    font-size: 1rem;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .radio-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  button {
+    width: 100%;
+    background: #1565c0;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  button:hover { background: #0d47a1; }
+  .message { text-align: center; margin-top: 12px; font-weight: bold; }
+  .success { color: #2e7d32; }
+  .error { color: #c62828; }
+  .center { text-align: center; }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="form-section">
+      <h1>Local Gospel / Follow-up Report</h1>
+
+      <form id="reportForm">
+        <fieldset>
+          <legend>Report Information</legend>
+          <label>Your name: <span class="required">*</span></label>
+          <input type="text" id="yourName" required placeholder="Enter your full name" />
+
+          <label>EU / Unit (optional)</label>
+          <input type="text" id="eu" placeholder="e.g., College EU name" />
+
+          <label>Date <span class="required">*</span></label>
+          <input type="date" id="reportDate" required />
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Gospel / Evangelistic Efforts</legend>
+          <label>No. of Gospel Evenings / Retreats</label>
+          <input type="number" id="numGospel" min="0" placeholder="">
+
+          <label>Total No. of students responded (B+G)</label>
+          <input type="number" id="numResponded" min="0" placeholder="">
+
+          <label>Total No. of follow-up meetings conducted (B+G)</label>
+          <input type="number" id="numFollowupMeetings" min="0" placeholder="">
+
+          <label>No. of responded students attended follow-up (B+G)</label>
+          <input type="number" id="numAttendedFollowup" min="0" placeholder="">
+
+          <label>No. of students accepted the Lord (B+G)</label>
+          <input type="number" id="numAccepted" min="0" placeholder="">
+
+          <label>No. of born-again students attending Jr. BBSs (B+G)</label>
+          <input type="number" id="numBornAgain" min="0" placeholder="">
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Review of Follow-up Work</legend>
+
+          <label>No. of EUs where follow-up meetings conducted soon after Gospel meeting</label>
+          <input type="number" id="numEUsFollowup" min="0" placeholder="">
+
+          <label>Senior students' involvement</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Poor"> Poor</div>
+            <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Good"> Good</div>
+            <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Excellent"> Excellent</div>
+          </div>
+
+          <label>Graduates' involvement</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Poor"> Poor</div>
+            <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Good"> Good</div>
+            <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Excellent"> Excellent</div>
+          </div>
+
+          <label>Are senior students aware of counseling a responded student?</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="awareCounseling" value="Yes"> Yes</div>
+            <div class="radio-option"><input type="radio" name="awareCounseling" value="No"> No</div>
+          </div>
+
+          <label>Was any follow-up material used?</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="followupMaterial" value="Yes"> Yes</div>
+            <div class="radio-option"><input type="radio" name="followupMaterial" value="No"> No</div>
+          </div>
+
+          <label>Any specific problems for follow-up work?</label>
+          <textarea id="specificProblems" placeholder="Describe any issues or challenges"></textarea>
+        </fieldset>
+
+        <button type="submit" id="submitBtn">Submit Report</button>
+        <div id="message" class="message"></div>
+      </form>
+    </div>
+
+    <!-- Already responded screen -->
+    <div id="responded-section" style="display:none;" class="center">
+      <h2>✅ You’ve already submitted this form.</h2>
+      <p>Your response has been saved. You can edit it if needed.</p>
+      <button id="editBtn">Edit Response</button>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGS4dCnRS7ywHWRBjnaOpDmL28323flw8",
+      authDomain: "melamrahul.firebaseapp.com",
+      databaseURL: "https://melamrahul-default-rtdb.firebaseio.com",
+      projectId: "melamrahul",
+      storageBucket: "melamrahul.appspot.com",
+      messagingSenderId: "721100209859",
+      appId: "1:721100209859:web:52b007dd6becf1d54c6c76",
+      measurementId: "G-8ZH6Z66ESH"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const CACHE_KEY = "form-27-oct-2025";
+
+    // Basic device info
+    function getDeviceInfo() {
+      return {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        screenWidth: screen.width,
+        screenHeight: screen.height,
+        language: navigator.language
+      };
+    }
+
+    const form = document.getElementById("reportForm");
+    const message = document.getElementById("message");
+    const formSection = document.getElementById("form-section");
+    const respondedSection = document.getElementById("responded-section");
+
+    // Check if already submitted
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      formSection.style.display = "none";
+      respondedSection.style.display = "block";
+    }
+
+    // Prefill today's date
+    document.getElementById("reportDate").value = new Date().toISOString().slice(0,10);
+
+    // Edit existing data
+    document.getElementById("editBtn").addEventListener("click", () => {
+      const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
+      if (cachedData && cachedData.formData) fillForm(cachedData.formData);
+      formSection.style.display = "block";
+      respondedSection.style.display = "none";
+    });
+
+    function fillForm(data) {
+      document.getElementById("yourName").value = data.yourName || "";
+      document.getElementById("eu").value = data.eu || "";
+      document.getElementById("reportDate").value = data.reportDate || "";
+      document.getElementById("numGospel").value = data.gospelEfforts.numGospel || "";
+      document.getElementById("numResponded").value = data.gospelEfforts.numResponded || "";
+      document.getElementById("numFollowupMeetings").value = data.gospelEfforts.numFollowupMeetings || "";
+      document.getElementById("numAttendedFollowup").value = data.gospelEfforts.numAttendedFollowup || "";
+      document.getElementById("numAccepted").value = data.gospelEfforts.numAccepted || "";
+      document.getElementById("numBornAgain").value = data.gospelEfforts.numBornAgain || "";
+      document.getElementById("numEUsFollowup").value = data.followupReview.numEUsFollowup || "";
+      document.getElementById("specificProblems").value = data.followupReview.specificProblems || "";
+
+      const radios = document.querySelectorAll("input[type=radio]");
+      radios.forEach(r => {
+        if (r.name in data.followupReview && data.followupReview[r.name] === r.value)
+          r.checked = true;
+      });
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = {
+        yourName: document.getElementById("yourName").value.trim(),
+        eu: document.getElementById("eu").value.trim(),
+        reportDate: document.getElementById("reportDate").value,
+        gospelEfforts: {
+          numGospel: +document.getElementById("numGospel").value || 0,
+          numResponded: +document.getElementById("numResponded").value || 0,
+          numFollowupMeetings: +document.getElementById("numFollowupMeetings").value || 0,
+          numAttendedFollowup: +document.getElementById("numAttendedFollowup").value || 0,
+          numAccepted: +document.getElementById("numAccepted").value || 0,
+          numBornAgain: +document.getElementById("numBornAgain").value || 0
+        },
+        followupReview: {
+          numEUsFollowup: +document.getElementById("numEUsFollowup").value || 0,
+          seniorInvolvement: getRadioValue("seniorInvolvement"),
+          graduateInvolvement: getRadioValue("graduateInvolvement"),
+          awareCounseling: getRadioValue("awareCounseling"),
+          followupMaterial: getRadioValue("followupMaterial"),
+          specificProblems: document.getElementById("specificProblems").value.trim()
+        },
+        deviceInfo: getDeviceInfo(),
+        timestamp: new Date().toISOString()
+      };
+
+      if (!data.yourName || !data.reportDate) {
+        message.textContent = "Please fill required fields (Your Name and Date)";
+        message.className = "message error";
+        return;
+      }
+
+      const reportKey = db.ref().child("reports").push().key;
+      db.ref("reports/" + reportKey).set(data)
+        .then(() => {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ submitted: true, device: getDeviceInfo(), formData: data }));
+          message.textContent = "✅ Report submitted successfully!";
+          message.className = "message success";
+          setTimeout(() => {
+            formSection.style.display = "none";
+            respondedSection.style.display = "block";
+          }, 1000);
+        })
+        .catch(err => {
+          message.textContent = "❌ Error: " + err.message;
+          message.className = "message error";
+        });
+    });
+
+    function getRadioValue(name) {
+      const el = document.querySelector(`input[name='${name}']:checked`);
+      return el ? el.value : "";
+    }
+  </script>
+</body>
+</html>
