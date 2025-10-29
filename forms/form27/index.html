@@ -395,7 +395,8 @@
     const loader = document.getElementById("loader");
 
     // Check if already submitted (only show when revisited)
-    if (localStorage.getItem(CACHE_KEY)) {
+    let cached = JSON.parse(localStorage.getItem(CACHE_KEY));
+    if (cached && cached.submitted) {
       formSection.style.display = "none";
       respondedSection.style.display = "block";
     }
@@ -502,9 +503,25 @@
       loader.style.display = "flex";
 
       try {
-        const reportKey = db.ref().child("reports").push().key;
-        await db.ref("reports/" + reportKey).set(data);
-        localStorage.setItem(CACHE_KEY, JSON.stringify({ submitted: true, formData: data }));
+        // ✅ Check if a previous reportKey exists in localStorage
+        let cache = JSON.parse(localStorage.getItem(CACHE_KEY));
+        let reportKey;
+
+        if (cache && cache.reportKey) {
+          // existing key → update same node
+          reportKey = cache.reportKey;
+          await db.ref("reports/" + reportKey).update(data);
+        } else {
+          // first submission → create new key
+          reportKey = db.ref().child("reports").push().key;
+          await db.ref("reports/" + reportKey).set(data);
+        }
+
+        // ✅ save key + data in cache
+        localStorage.setItem(
+          CACHE_KEY,
+          JSON.stringify({ submitted: true, reportKey, formData: data })
+        );
 
         loader.style.display = "none";
 
@@ -526,6 +543,7 @@
       }
     });
   </script>
+
 </body>
 
 </html>
