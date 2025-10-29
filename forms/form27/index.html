@@ -2,500 +2,530 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Local Gospel/Follow-up Report</title>
-    <meta name="title" content="Local Gospel/Follow-up Report">
-    <meta name="description" content="Easy Forms - Created by Rahul">
-    <link rel="canonical" href="https://uesiap.github.io/rahul/forms/form27" />
-    <link rel="icon" href="/vidhyardhi-geethavali/Icon192.jpg" type="image/png">
-    <link rel="apple-touch-icon" href="/vidhyardhi-geethavali/Icon-192.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Gospel/Follow-up Report</title>
+  <meta name="title" content="Local Gospel/Follow-up Report">
+  <meta name="description" content="Easy Forms - Created by Rahul">
+  <link rel="canonical" href="https://uesiap.github.io/rahul/forms/form27" />
+  <link rel="icon" href="/vidhyardhi-geethavali/Icon192.jpg" type="image/png">
+  <link rel="apple-touch-icon" href="/vidhyardhi-geethavali/Icon-192.jpg">
 
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f6f9fc;
-            color: #333;
-            padding: 14px;
-            justify-content: center;
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f6f9fc;
+      color: #333;
+      padding: 14px;
+      justify-content: center;
+    }
 
-        .container {
-            max-width: 900px;
-            width: 100%;
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
+    .container {
+      max-width: 900px;
+      width: 100%;
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
 
-        h1 {
-            color: #1565c0;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
+    h1 {
+      color: #1565c0;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
 
-        fieldset {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 18px;
-            padding: 15px;
-        }
+    fieldset {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      padding: 15px;
+    }
 
-        legend {
-            color: #1565c0;
-            font-weight: bold;
-        }
+    legend {
+      color: #1565c0;
+      font-weight: bold;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 1rem;
-        }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
 
-        .required {
-            color: red;
-        }
+    .required {
+      color: red;
+    }
 
-        input,
-        textarea {
-            width: 90%;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            margin-bottom: 12px;
-            font-size: 1rem;
-        }
+    input,
+    textarea {
+      width: 90%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
 
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
 
-        .radio-row {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-        }
+    .radio-row {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
 
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-        button {
-            width: 100%;
-            background: #1565c0;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
+    button {
+      width: 100%;
+      background: #1565c0;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
 
-        button:hover {
-            background: #0d47a1;
-        }
+    button:hover {
+      background: #0d47a1;
+    }
 
-        .message {
-            text-align: center;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
 
-        .success {
-            color: #2e7d32;
-        }
+    .success {
+      color: #2e7d32;
+    }
 
-        .error {
-            color: #c62828;
-        }
+    .error {
+      color: #c62828;
+    }
 
-        .center {
-            text-align: center;
-        }
+    .center {
+      text-align: center;
+    }
 
-        /* Loader Overlay */
-        #loader {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Fix to entire screen */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            /* translucent background */
-            z-index: 9999;
-            /* ensure it’s on top of everything */
-            align-items: center;
-            justify-content: center;
-        }
+    /* Loader Overlay */
+    #loader {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Fix to entire screen */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      /* translucent background */
+      z-index: 9999;
+      /* ensure it’s on top of everything */
+      align-items: center;
+      justify-content: center;
+    }
 
-        /* Spinner Animation */
-        .lds-spinner {
-            position: relative;
-            width: 80px;
-            height: 80px;
-        }
+    /* Spinner Animation */
+    .lds-spinner {
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
 
-        .lds-spinner div {
-            transform-origin: 40px 40px;
-            animation: lds-spinner 1.2s linear infinite;
-        }
+    .lds-spinner div {
+      transform-origin: 40px 40px;
+      animation: lds-spinner 1.2s linear infinite;
+    }
 
-        .lds-spinner div:after {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 3px;
-            left: 37px;
-            width: 6px;
-            height: 18px;
-            border-radius: 20%;
-            background: #0078d7;
-        }
+    .lds-spinner div:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 3px;
+      left: 37px;
+      width: 6px;
+      height: 18px;
+      border-radius: 20%;
+      background: #0078d7;
+    }
 
-        .lds-spinner div:nth-child(1) {
-            transform: rotate(0deg);
-            animation-delay: -1.1s;
-        }
+    .lds-spinner div:nth-child(1) {
+      transform: rotate(0deg);
+      animation-delay: -1.1s;
+    }
 
-        .lds-spinner div:nth-child(2) {
-            transform: rotate(30deg);
-            animation-delay: -1s;
-        }
+    .lds-spinner div:nth-child(2) {
+      transform: rotate(30deg);
+      animation-delay: -1s;
+    }
 
-        .lds-spinner div:nth-child(3) {
-            transform: rotate(60deg);
-            animation-delay: -0.9s;
-        }
+    .lds-spinner div:nth-child(3) {
+      transform: rotate(60deg);
+      animation-delay: -0.9s;
+    }
 
-        .lds-spinner div:nth-child(4) {
-            transform: rotate(90deg);
-            animation-delay: -0.8s;
-        }
+    .lds-spinner div:nth-child(4) {
+      transform: rotate(90deg);
+      animation-delay: -0.8s;
+    }
 
-        .lds-spinner div:nth-child(5) {
-            transform: rotate(120deg);
-            animation-delay: -0.7s;
-        }
+    .lds-spinner div:nth-child(5) {
+      transform: rotate(120deg);
+      animation-delay: -0.7s;
+    }
 
-        .lds-spinner div:nth-child(6) {
-            transform: rotate(150deg);
-            animation-delay: -0.6s;
-        }
+    .lds-spinner div:nth-child(6) {
+      transform: rotate(150deg);
+      animation-delay: -0.6s;
+    }
 
-        .lds-spinner div:nth-child(7) {
-            transform: rotate(180deg);
-            animation-delay: -0.5s;
-        }
+    .lds-spinner div:nth-child(7) {
+      transform: rotate(180deg);
+      animation-delay: -0.5s;
+    }
 
-        .lds-spinner div:nth-child(8) {
-            transform: rotate(210deg);
-            animation-delay: -0.4s;
-        }
+    .lds-spinner div:nth-child(8) {
+      transform: rotate(210deg);
+      animation-delay: -0.4s;
+    }
 
-        .lds-spinner div:nth-child(9) {
-            transform: rotate(240deg);
-            animation-delay: -0.3s;
-        }
+    .lds-spinner div:nth-child(9) {
+      transform: rotate(240deg);
+      animation-delay: -0.3s;
+    }
 
-        .lds-spinner div:nth-child(10) {
-            transform: rotate(270deg);
-            animation-delay: -0.2s;
-        }
+    .lds-spinner div:nth-child(10) {
+      transform: rotate(270deg);
+      animation-delay: -0.2s;
+    }
 
-        .lds-spinner div:nth-child(11) {
-            transform: rotate(300deg);
-            animation-delay: -0.1s;
-        }
+    .lds-spinner div:nth-child(11) {
+      transform: rotate(300deg);
+      animation-delay: -0.1s;
+    }
 
-        .lds-spinner div:nth-child(12) {
-            transform: rotate(330deg);
-            animation-delay: 0s;
-        }
+    .lds-spinner div:nth-child(12) {
+      transform: rotate(330deg);
+      animation-delay: 0s;
+    }
 
-        @keyframes lds-spinner {
-            0% {
-                opacity: 1;
-            }
+    @keyframes lds-spinner {
+      0% {
+        opacity: 1;
+      }
 
-            100% {
-                opacity: 0;
-            }
-        }
-    </style>
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div id="loader">
-        <div class="lds-spinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+  <div id="loader">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-    <div class="container">
+  </div>
+  <div class="container">
 
-        <div id="form-section">
-            <h1>Local Gospel / Follow-up Report</h1>
-            <div id="message" class="message"></div>
+    <div id="form-section">
+      <h1>Local Gospel / Follow-up Report</h1>
+      <div id="message" class="message"></div>
 
-            <form id="reportForm">
-                <fieldset>
-                    <legend>Report Information</legend>
-                    <label>Your name: <span class="required">*</span></label>
-                    <input type="text" id="yourName" required placeholder="Enter your full name" />
+      <form id="reportForm">
+        <fieldset>
+          <legend>Report Information</legend>
+          <label>Your name: <span class="required">*</span></label>
+          <input type="text" id="yourName" required placeholder="Enter your full name" />
 
-                    <label>Zone Name:</label>
-                    <input type="text" id="eu" placeholder="e.g., Enter your zone name" />
+          <label>Zone Name:</label>
+          <input type="text" id="eu" placeholder="e.g., Enter your zone name" />
 
-                    <label>Date <span class="required">*</span></label>
-                    <input type="date" id="reportDate" required />
-                </fieldset>
+          <label>Date <span class="required">*</span></label>
+          <input type="date" id="reportDate" required /><br><br>
 
-                <fieldset>
-                    <legend>2. Gospel / Evangelistic Efforts</legend>
-                    <label>No. of Gospel Evenings / Retreats conducted</label>
-                    <input type="number" id="numGospel" min="0" placeholder="">
-                    <label>Total No. of students responded (B+G)</label>
-                    <input type="number" id="numResponded" min="0" placeholder="">
-                    <label>Total No. of follow-up meetings conducted (B+G)</label>
-                    <input type="number" id="numFollowupMeetings" min="0" placeholder="">
-                    <label>No. of responded students attended follow-up (B+G)</label>
-                    <input type="number" id="numAttendedFollowup" min="0" placeholder="">
-                    <label>No. of students accepted the Lord (B+G)</label>
-                    <input type="number" id="numAccepted" min="0" placeholder="">
-                    <label>No. of born-again students attending Jr. BBSs (B+G)</label>
-                    <input type="number" id="numBornAgain" min="0" placeholder="">
-                </fieldset>
+          <label>No. of EBS Cells for Boys:</label>
+          <input type="number" id="ebsBoys" min="0" placeholder="">
 
-                <fieldset>
-                    <legend>3. Review of Follow-up Work</legend>
-                    <label>Did your zone conduct Follow-up meets within a short time after gospel meeting?</label>
-                    <div class="radio-row">
-                        <div class="radio-option"><input type="radio" name="numEUsFollowup" value="Yes"> Yes</div>
-                        <div class="radio-option"><input type="radio" name="numEUsFollowup" value="No"> No</div>
-                    </div>
+          <label>No. of EBS Cells for Girls:</label>
+          <input type="number" id="ebsGirls" min="0" placeholder="">
 
-                    <label>Senior students' involvement</label>
-                    <div class="radio-row">
-                        <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Poor"> Poor</div>
-                        <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Good"> Good</div>
-                        <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Excellent">
-                            Excellent</div>
-                    </div>
+          <label>No. of BBS Cells for Boys:</label>
+          <input type="number" id="bbsBoys" min="0" placeholder="">
 
-                    <label>Graduates' involvement</label>
-                    <div class="radio-row">
-                        <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Poor"> Poor
-                        </div>
-                        <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Good"> Good
-                        </div>
-                        <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Excellent">
-                            Excellent</div>
-                    </div>
+          <label>No. of BBS Cells for Girls:</label>
+          <input type="number" id="bbsGirls" min="0" placeholder="">
+        </fieldset>
 
-                    <label>Are senior students aware of counseling a responded student?</label>
-                    <div class="radio-row">
-                        <div class="radio-option"><input type="radio" name="awareCounseling" value="Yes"> Yes</div>
-                        <div class="radio-option"><input type="radio" name="awareCounseling" value="No"> No</div>
-                    </div>
+        <fieldset>
+          <legend>2. Gospel / Evangelistic Efforts</legend>
+          <label>No. of Gospel Evenings / Retreats conducted</label>
+          <input type="number" id="numGospel" min="0" placeholder="">
+          <label>Total No. of students responded (B+G)</label>
+          <input type="number" id="numResponded" min="0" placeholder="">
+          <label>Total No. of follow-up meetings conducted (B+G)</label>
+          <input type="number" id="numFollowupMeetings" min="0" placeholder="">
+          <label>No. of responded students attended follow-up (B+G)</label>
+          <input type="number" id="numAttendedFollowup" min="0" placeholder="">
+          <label>No. of students accepted the Lord (B+G)</label>
+          <input type="number" id="numAccepted" min="0" placeholder="">
+          <label>No. of born-again students attending Jr. BBSs (B+G)</label>
+          <input type="number" id="numBornAgain" min="0" placeholder="">
+        </fieldset>
 
-                    <label>Was any follow-up material used?</label>
-                    <div class="radio-row">
-                        <div class="radio-option"><input type="radio" name="followupMaterial" value="Yes"> Yes</div>
-                        <div class="radio-option"><input type="radio" name="followupMaterial" value="No"> No</div>
-                    </div>
+        <fieldset>
+          <legend>3. Review of Follow-up Work</legend>
+          <label>Did your zone conduct Follow-up meets within a short time after gospel meeting?</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="numEUsFollowup" value="Yes"> Yes</div>
+            <div class="radio-option"><input type="radio" name="numEUsFollowup" value="No"> No</div>
+          </div>
 
-                    <label>Any specific problems for follow-up work?</label>
-                    <textarea id="specificProblems" placeholder="Describe any issues or challenges"></textarea>
-                </fieldset>
+          <label>Senior students' involvement</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Poor"> Poor</div>
+            <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Good"> Good</div>
+            <div class="radio-option"><input type="radio" name="seniorInvolvement" value="Excellent">
+              Excellent</div>
+          </div>
 
-                <button type="submit" id="submitBtn">Submit Report</button>
-            </form>
-        </div>
+          <label>Graduates' involvement</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Poor"> Poor
+            </div>
+            <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Good"> Good
+            </div>
+            <div class="radio-option"><input type="radio" name="graduateInvolvement" value="Excellent">
+              Excellent</div>
+          </div>
 
-        <!-- Already responded screen -->
-        <div id="responded-section" style="display:none;" class="center">
-            <h2>✅ You’ve already submitted this form.</h2>
-            <p>Your response has been saved. You can edit it if needed.</p>
-            <button id="editBtn">Edit Response</button>
-        </div>
+          <label>Are senior students aware of counseling a responded student?</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="awareCounseling" value="Yes"> Yes</div>
+            <div class="radio-option"><input type="radio" name="awareCounseling" value="No"> No</div>
+          </div>
+
+          <label>Was any follow-up material used?</label>
+          <div class="radio-row">
+            <div class="radio-option"><input type="radio" name="followupMaterial" value="Yes"> Yes</div>
+            <div class="radio-option"><input type="radio" name="followupMaterial" value="No"> No</div>
+          </div>
+
+          <label>Any specific problems for follow-up work?</label>
+          <textarea id="specificProblems" placeholder="Describe any issues or challenges"></textarea>
+        </fieldset>
+
+        <button type="submit" id="submitBtn">Submit Report</button>
+      </form>
     </div>
-    <footer style="text-align:center;margin-top:30px;color:#555;font-size:0.9rem;">&copy; Easy Forms by <a href='https://rahul.serv00.net/profile' style='text-decoration:none;color:#197afe;'>M.Rahul</a></footer>
 
-    <script>
-        // Firebase config
-        const firebaseConfig = {
-            apiKey: "AIzaSyDGS4dCnRS7ywHWRBjnaOpDmL28323flw8",
-            authDomain: "melamrahul.firebaseapp.com",
-            databaseURL: "https://melamrahul-default-rtdb.firebaseio.com",
-            projectId: "melamrahul",
-            storageBucket: "melamrahul.appspot.com",
-            messagingSenderId: "721100209859",
-            appId: "1:721100209859:web:52b007dd6becf1d54c6c76",
-            measurementId: "G-8ZH6Z66ESH"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
+    <!-- Already responded screen -->
+    <div id="responded-section" style="display:none;" class="center">
+      <h2>✅ You’ve already submitted this form.</h2>
+      <p>Your response has been saved. You can edit it if needed.</p>
+      <button id="editBtn">Edit Response</button>
+    </div>
+  </div>
+  <footer style="text-align:center;margin-top:30px;color:#555;font-size:0.9rem;">&copy; Easy Forms by <a
+      href='https://rahul.serv00.net/profile' style='text-decoration:none;color:#197afe;'>M.Rahul</a></footer>
 
-        const CACHE_KEY = "form-27-oct-2025";
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGS4dCnRS7ywHWRBjnaOpDmL28323flw8",
+      authDomain: "melamrahul.firebaseapp.com",
+      databaseURL: "https://melamrahul-default-rtdb.firebaseio.com",
+      projectId: "melamrahul",
+      storageBucket: "melamrahul.appspot.com",
+      messagingSenderId: "721100209859",
+      appId: "1:721100209859:web:52b007dd6becf1d54c6c76",
+      measurementId: "G-8ZH6Z66ESH"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-        function getDeviceInfo() {
-            return {
-                userAgent: navigator.userAgent,
-                platform: navigator.platform,
-                screenWidth: screen.width,
-                screenHeight: screen.height,
-                language: navigator.language
-            };
-        }
+    const CACHE_KEY = "form-27-oct-2025";
 
-        const form = document.getElementById("reportForm");
-        const message = document.getElementById("message");
-        const formSection = document.getElementById("form-section");
-        const respondedSection = document.getElementById("responded-section");
-        const loader = document.getElementById("loader");
+    function getDeviceInfo() {
+      return {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        screenWidth: screen.width,
+        screenHeight: screen.height,
+        language: navigator.language
+      };
+    }
 
-        // Check if already submitted (only show when revisited)
-        if (localStorage.getItem(CACHE_KEY)) {
-            formSection.style.display = "none";
-            respondedSection.style.display = "block";
-        }
+    const form = document.getElementById("reportForm");
+    const message = document.getElementById("message");
+    const formSection = document.getElementById("form-section");
+    const respondedSection = document.getElementById("responded-section");
+    const loader = document.getElementById("loader");
 
-        // Prefill today's date
-        document.getElementById("reportDate").value = new Date().toISOString().slice(0, 10);
+    // Check if already submitted (only show when revisited)
+    if (localStorage.getItem(CACHE_KEY)) {
+      formSection.style.display = "none";
+      respondedSection.style.display = "block";
+    }
 
-        // Edit existing data
-        document.getElementById("editBtn").addEventListener("click", () => {
-            const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
-            if (cachedData && cachedData.formData) fillForm(cachedData.formData);
-            formSection.style.display = "block";
-            respondedSection.style.display = "none";
+    // Prefill today's date
+    document.getElementById("reportDate").value = new Date().toISOString().slice(0, 10);
+
+    // Edit existing data
+    document.getElementById("editBtn").addEventListener("click", () => {
+      const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
+      if (cachedData && cachedData.formData) fillForm(cachedData.formData);
+      formSection.style.display = "block";
+      respondedSection.style.display = "none";
+    });
+
+    function fillForm(data) {
+      document.getElementById("yourName").value = data.yourName || "";
+      document.getElementById("eu").value = data.eu || "";
+      document.getElementById("reportDate").value = data.reportDate || "";
+
+      // ✅ Load new cell group data
+      if (data.cellGroups) {
+        document.getElementById("ebsBoys").value = data.cellGroups.ebsBoys || "";
+        document.getElementById("ebsGirls").value = data.cellGroups.ebsGirls || "";
+        document.getElementById("bbsBoys").value = data.cellGroups.bbsBoys || "";
+        document.getElementById("bbsGirls").value = data.cellGroups.bbsGirls || "";
+      }
+
+      document.getElementById("numGospel").value = data.gospelEfforts.numGospel || "";
+      document.getElementById("numResponded").value = data.gospelEfforts.numResponded || "";
+      document.getElementById("numFollowupMeetings").value = data.gospelEfforts.numFollowupMeetings || "";
+      document.getElementById("numAttendedFollowup").value = data.gospelEfforts.numAttendedFollowup || "";
+      document.getElementById("numAccepted").value = data.gospelEfforts.numAccepted || "";
+      document.getElementById("numBornAgain").value = data.gospelEfforts.numBornAgain || "";
+      document.getElementById("specificProblems").value = data.followupReview.specificProblems || "";
+
+      const radios = document.querySelectorAll("input[type=radio]");
+      radios.forEach(r => {
+        if (r.name in data.followupReview && data.followupReview[r.name] === r.value)
+          r.checked = true;
+      });
+    }
+
+    function getRadioValue(name) {
+      const el = document.querySelector(`input[name='${name}']:checked`);
+      return el ? el.value : "";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = {
+        yourName: document.getElementById("yourName").value.trim(),
+        eu: document.getElementById("eu").value.trim(),
+        reportDate: document.getElementById("reportDate").value,
+
+        // ✅ New fields for EBS/BBS Cells
+        cellGroups: {
+          ebsBoys: +document.getElementById("ebsBoys").value || 0,
+          ebsGirls: +document.getElementById("ebsGirls").value || 0,
+          bbsBoys: +document.getElementById("bbsBoys").value || 0,
+          bbsGirls: +document.getElementById("bbsGirls").value || 0
+        },
+
+        gospelEfforts: {
+          numGospel: +document.getElementById("numGospel").value || 0,
+          numResponded: +document.getElementById("numResponded").value || 0,
+          numFollowupMeetings: +document.getElementById("numFollowupMeetings").value || 0,
+          numAttendedFollowup: +document.getElementById("numAttendedFollowup").value || 0,
+          numAccepted: +document.getElementById("numAccepted").value || 0,
+          numBornAgain: +document.getElementById("numBornAgain").value || 0
+        },
+        followupReview: {
+          numEUsFollowup: getRadioValue("numEUsFollowup"),
+          seniorInvolvement: getRadioValue("seniorInvolvement"),
+          graduateInvolvement: getRadioValue("graduateInvolvement"),
+          awareCounseling: getRadioValue("awareCounseling"),
+          followupMaterial: getRadioValue("followupMaterial"),
+          specificProblems: document.getElementById("specificProblems").value.trim()
+        },
+        deviceInfo: getDeviceInfo(),
+        timestamp: new Date().toISOString()
+      };
+
+      if (!data.yourName || !data.reportDate) {
+        message.textContent = "Please fill required fields (Your Name and Date)";
+        message.className = "message error";
+        return;
+      }
+
+      // Confirm submission
+      const confirmResult = await Swal.fire({
+        title: "Submit Report?",
+        text: "Please confirm you want to submit your report.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes, submit",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#1565c0"
+      });
+
+      if (!confirmResult.isConfirmed) return;
+
+      loader.style.display = "flex";
+
+      try {
+        const reportKey = db.ref().child("reports").push().key;
+        await db.ref("reports/" + reportKey).set(data);
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ submitted: true, formData: data }));
+
+        loader.style.display = "none";
+
+        await Swal.fire({
+          icon: "success",
+          title: "Report Submitted!",
+          text: "Your report has been recorded successfully.",
+          confirmButtonColor: "#1565c0"
         });
 
-        function fillForm(data) {
-            document.getElementById("yourName").value = data.yourName || "";
-            document.getElementById("eu").value = data.eu || "";
-            document.getElementById("reportDate").value = data.reportDate || "";
-            document.getElementById("numGospel").value = data.gospelEfforts.numGospel || "";
-            document.getElementById("numResponded").value = data.gospelEfforts.numResponded || "";
-            document.getElementById("numFollowupMeetings").value = data.gospelEfforts.numFollowupMeetings || "";
-            document.getElementById("numAttendedFollowup").value = data.gospelEfforts.numAttendedFollowup || "";
-            document.getElementById("numAccepted").value = data.gospelEfforts.numAccepted || "";
-            document.getElementById("numBornAgain").value = data.gospelEfforts.numBornAgain || "";
-            document.getElementById("specificProblems").value = data.followupReview.specificProblems || "";
+        form.reset();
+        message.textContent = "✅ Report submitted successfully!";
+        message.className = "message success";
+        form.style.display = "none";
 
-            const radios = document.querySelectorAll("input[type=radio]");
-            radios.forEach(r => {
-                if (r.name in data.followupReview && data.followupReview[r.name] === r.value)
-                    r.checked = true;
-            });
-        }
-
-        function getRadioValue(name) {
-            const el = document.querySelector(`input[name='${name}']:checked`);
-            return el ? el.value : "";
-        }
-
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const data = {
-                yourName: document.getElementById("yourName").value.trim(),
-                eu: document.getElementById("eu").value.trim(),
-                reportDate: document.getElementById("reportDate").value,
-                gospelEfforts: {
-                    numGospel: +document.getElementById("numGospel").value || 0,
-                    numResponded: +document.getElementById("numResponded").value || 0,
-                    numFollowupMeetings: +document.getElementById("numFollowupMeetings").value || 0,
-                    numAttendedFollowup: +document.getElementById("numAttendedFollowup").value || 0,
-                    numAccepted: +document.getElementById("numAccepted").value || 0,
-                    numBornAgain: +document.getElementById("numBornAgain").value || 0
-                },
-                followupReview: {
-                    numEUsFollowup: getRadioValue("numEUsFollowup"),
-                    seniorInvolvement: getRadioValue("seniorInvolvement"),
-                    graduateInvolvement: getRadioValue("graduateInvolvement"),
-                    awareCounseling: getRadioValue("awareCounseling"),
-                    followupMaterial: getRadioValue("followupMaterial"),
-                    specificProblems: document.getElementById("specificProblems").value.trim()
-                },
-                deviceInfo: getDeviceInfo(),
-                timestamp: new Date().toISOString()
-            };
-
-            if (!data.yourName || !data.reportDate) {
-                message.textContent = "Please fill required fields (Your Name and Date)";
-                message.className = "message error";
-                return;
-            }
-
-            // Confirm submission
-            const confirmResult = await Swal.fire({
-                title: "Submit Report?",
-                text: "Please confirm you want to submit your report.",
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonText: "Yes, submit",
-                cancelButtonText: "Cancel",
-                confirmButtonColor: "#1565c0"
-            });
-
-            if (!confirmResult.isConfirmed) return;
-
-            loader.style.display = "flex";
-
-            try {
-                const reportKey = db.ref().child("reports").push().key;
-                await db.ref("reports/" + reportKey).set(data);
-                localStorage.setItem(CACHE_KEY, JSON.stringify({ submitted: true, formData: data }));
-
-                loader.style.display = "none";
-
-                await Swal.fire({
-                    icon: "success",
-                    title: "Report Submitted!",
-                    text: "Your report has been recorded successfully.",
-                    confirmButtonColor: "#1565c0"
-                });
-
-                form.reset();
-                message.textContent = "✅ Report submitted successfully!";
-                message.className = "message success";
-                form.style.display = "none";
-
-
-            } catch (err) {
-                loader.style.display = "none";
-                Swal.fire("Error", err.message, "error");
-            }
-        });
-    </script>
+      } catch (err) {
+        loader.style.display = "none";
+        Swal.fire("Error", err.message, "error");
+      }
+    });
+  </script>
 </body>
 
 </html>
