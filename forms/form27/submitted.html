@@ -251,6 +251,13 @@
           ${createItem("Are senior students aware of counseling a responded student?", r.followupReview?.awareCounseling)}
           ${createItem("Was any follow-up material used?", r.followupReview?.followupMaterial)}
           ${createItem("Any specific problems for follow-up work?", r.followupReview?.specificProblems)}
+
+          <!-- ✅ NEW SECTION: EBS/BBS Cells -->
+          <div class="response-subheader">📘 EBS / BBS Cell Groups</div>
+          ${createItem("No. of EBS (Boys)", r.cellGroups?.ebsBoys)}
+          ${createItem("No. of EBS (Girls)", r.cellGroups?.ebsGirls)}
+          ${createItem("No. of BBS (Boys)", r.cellGroups?.bbsBoys)}
+          ${createItem("No. of BBS (Girls)", r.cellGroups?.bbsGirls)}
         </div>
       `;
       counter.textContent = `${index + 1} / ${reports.length}`;
@@ -283,5 +290,7 @@
 
     fetchData();
   </script>
+
 </body>
+
 </html>
