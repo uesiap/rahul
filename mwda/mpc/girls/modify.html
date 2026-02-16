@@ -180,7 +180,7 @@
                         btn.classList.add('save-btn');
                         btn.addEventListener('click', () => {
                             const newValue = parseInt(input.value) || 0;
-                            db.ref(`MPC/${cell.key}/Freq`).set(newValue)
+                            db.ref(`MWDA/Girls/${cell.key}/Freq`).set(newValue)
                                 .then(() => alert(`Updated ${cell.data.Graduate} to ${newValue}`))
                                 .catch(err => alert('Error: ' + err.message));
                         });
